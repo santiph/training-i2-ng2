@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { TeamHomePage } from '../pages';
+import { TeamHomePage, MapPage } from '../pages';
 import { EliteAPI } from '../../shared/shared';
 
 /*
@@ -26,6 +26,7 @@ export class GamePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad GamePage');
     this.game = this.navParams.data;
+    this.game.gameTime = Date.parse(this.game.time);
   }
 
   teamTapped(teamId) {
@@ -33,4 +34,13 @@ export class GamePage {
     let team = tourneyData.teams.find(t => t.id === teamId);
     this.navCtrl.push(TeamHomePage, team);
   }
+
+  isWinner(team1Score, team2Score) {
+    return Number(team1Score) > Number(team2Score);
+  }
+
+  goToMap() {
+    this.navCtrl.push(MapPage, this.game);
+  }
+  goToDirections() {}
 }

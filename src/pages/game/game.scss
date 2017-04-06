@@ -1,3 +1,12 @@
 page-game {
+    $border-style: thin solid gray;
 
+    .top-bottom-border {
+        border-bottom: $border-style;
+        border-top: $border-style;
+    }
+
+    .divider-col {
+        border-right: $border-style;
+    }
 }
