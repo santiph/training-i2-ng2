@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { TeamHomePage, MapPage } from '../pages';
 import { EliteAPI } from '../../shared/shared';
+declare var window: any;
 
 /*
   Generated class for the Game page.
@@ -42,5 +43,10 @@ export class GamePage {
   goToMap() {
     this.navCtrl.push(MapPage, this.game);
   }
-  goToDirections() {}
+
+  goToDirections() {
+    let tourneyData = this.eliteApi.getCurrentTourney();
+    let location = tourneyData.locations[this.game.locationId];
+    window.location = `geo:${location.latitude},${location.longitude};u=35;`;
+  }
 }

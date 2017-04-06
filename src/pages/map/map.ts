@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { EliteAPI } from '../../shared/shared'
+declare var window: any;
 
 /*
   Generated class for the Map page.
@@ -35,6 +36,11 @@ export class MapPage {
         zoom: 12,
         markerLabel: games.location
     };
+  }
+
+  goToDirections() {
+      console.log('Navigate to', `geo:${this.map.lat},${this.map.lng}?q=${this.map.lat},${this.map.lng};u=35`);
+      window.location = `geo:${this.map.lat},${this.map.lng}?q=${this.map.lat},${this.map.lng};u=35`;
   }
 
 }

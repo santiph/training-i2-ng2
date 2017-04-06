@@ -14,7 +14,11 @@
 
 
 <ion-content class='map-page'>
-
+    <ion-fab left bottom>
+        <button ion-fab class='fab-map' (click)='goToDirections()'>
+            <ion-icon name="navigate"></ion-icon>
+        </button>
+    </ion-fab>
     <sebm-google-map
         id="map"
         [latitude]="map.lat"
